@@ -1,0 +1,23 @@
+<form class="login-form">
+
+    <mat-button-toggle-group name="login-or-register" class="login-button">
+        <mat-button-toggle value="login" checked (click)="this.isLogin = true">Login</mat-button-toggle>
+        <mat-button-toggle value="register" (click)="this.isLogin = false">Register</mat-button-toggle>
+      </mat-button-toggle-group>
+
+  <mat-form-field class="login-input">
+    <input matInput placeholder="Username" (ngModel)="username" name="username">
+  </mat-form-field>
+  <mat-form-field class="login-input">
+    <input type="password" matInput placeholder="Password" (ngModel)="password" name="password">
+  </mat-form-field>
+
+  <mat-form-field class="login-input" *ngIf="!this.isLogin">
+    <input matInput type="email" placeholder="Email" (ngModel)="email" name="email">
+  </mat-form-field>
+
+  <button mat-raised-button *ngIf="this.isLogin" (click)="this.login()" [disabled]="buttonDisabled">Login</button>
+
+  <button mat-raised-button *ngIf="!this.isLogin" (click)="this.register()" [disabled]="buttonDisabled">Register</button>
+
+</form>
