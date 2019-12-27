@@ -17,6 +17,7 @@ const httpOptions = {
 export class LoginService {
 
   private loginUrl = "/api/v1/login"
+  private registerUrl = "/api/v1/register"
 
   private user: User;
   
@@ -29,7 +30,7 @@ export class LoginService {
     }
     return this.http.post<User>(this.loginUrl, loginUser, httpOptions)
       .pipe(
-        retry(3),
+        //retry(3),
         map(user => this.user = user),
         catchError(this.handleError)
       );
@@ -41,7 +42,7 @@ export class LoginService {
       password: password,
       email: email
     }
-    return this.http.post<User>(this.loginUrl, signupUser, httpOptions)
+    return this.http.post<User>(this.registerUrl, signupUser, httpOptions)
       .pipe(
         retry(3),
         map(user => this.user = user),
@@ -55,13 +56,13 @@ export class LoginService {
     } else {
       // The backend returned an unsuccessful response code.
       // The response body may contain clues as to what went wrong,
+      if (error.error == "incorrect credentials"){
+        return throwError(
+          "Incorrect credentials");
+      }
       if (error.error == "user already exists"){
         return throwError(
           "User already exists, choose another username");
-      }
-      if (error.error == "incorrect password"){
-        return throwError(
-          "Incorrect password");
       }
     }
     // return an observable with a user-facing error message
