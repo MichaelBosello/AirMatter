@@ -1,0 +1,52 @@
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<!-- Header with full-height image -->
+<header class="bgimg-1 w3-display-container w3-grayscale-min" id="home">
+  <div class="w3-display-left w3-text-white" style="padding:48px">
+    <span class="w3-jumbo w3-hide-small">{{title}}</span><br>
+    <span class="w3-xxlarge w3-hide-large w3-hide-medium">{{title}}</span><br>
+    <span class="w3-large">Make a precious contribution while having fun</span>
+    <p><a href="#play" class="w3-button w3-white w3-padding-large w3-large w3-margin-top w3-opacity w3-hover-opacity-off">Play</a></p>
+  </div> 
+</header>
+
+<!-- About Section -->
+<div class="w3-container section-row" id="about">
+  <h3 class="w3-center">ABOUT THE APP</h3>
+  <div class="w3-row-padding w3-center" style="margin-top:64px">
+    <div class="w3-third">
+      <i class="fa fa-bicycle w3-margin-bottom w3-jumbo"></i>
+      <p class="w3-large">Fun bike riding</p>
+      <p>{{title}} allows you to enjoy your bike ride by giving you fun targets.</p>
+    </div>
+    <div class="w3-third">
+      <i class="fa fa-diamond w3-margin-bottom w3-jumbo"></i>
+      <p class="w3-large">For a good cause</p>
+      <p>We are producing a map of air quality, and by using this app you make a precious contribution to this worthy cause.</p>
+    </div>
+    <div class="w3-third">
+      <i class="fa fa-trophy w3-margin-bottom w3-jumbo"></i>
+      <p class="w3-large">In game rewards</p>
+      <p>Level up by mapping new areas to obtain special items</p>
+    </div>
+  </div>
+</div>
+
+<!-- Promo Section - "We know design" -->
+<div class="w3-container w3-light-grey section-row">
+  <div id="play">
+    <h3 class="w3-center">Follow the three steps below to start playing</h3>
+    <mat-card class="main-card">
+      <app-stepper></app-stepper>
+    </mat-card>
+  </div>
+</div>
+
+
+
+<!-- Footer -->
+<footer class="w3-center w3-black w3-padding-64">
+  <a href="#home" class="w3-button w3-light-grey"><i class="fa fa-arrow-up w3-margin-right"></i>To the top</a>
+</footer>

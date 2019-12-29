@@ -18,6 +18,9 @@ import {MatCardModule} from '@angular/material/card';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
+import { GameComponent } from './game/game.component';
+import { MapComponent } from './map/map.component';
+import { HomeComponent } from './home/home.component';
 
 
 
@@ -27,7 +30,10 @@ import { HttpClientModule } from '@angular/common/http';
     AppComponent,
     LoginComponent,
     BluetoothComponent,
-    StepperComponent
+    StepperComponent,
+    GameComponent,
+    MapComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,

@@ -10,6 +10,8 @@ export class BluetoothService {
   private temperatureCharacteristic: any;
   private pollutionCharacteristic: any;
 
+  private connected = false;
+
   constructor() { }
 
   isBluetoothSupported():boolean {
@@ -19,6 +21,8 @@ export class BluetoothService {
       return false;
     }
   }
+
+  isConnected(): boolean { return this.connected}
 
   connectBluetooth():any {
     return this.mobileNavigatorObject.bluetooth.requestDevice({ filters: [{ services: [0x1900] }] })
@@ -39,9 +43,13 @@ export class BluetoothService {
       this.humidityCharacteristic = characteristic[0];
       this.temperatureCharacteristic = characteristic[1];
       this.pollutionCharacteristic = characteristic[2];
-      return true;
+      this.connected = true;
+      return this.connected;
     })
-		.catch(error => { return false });
+		.catch(error => {
+      this.connected = false;
+      return this.connected 
+    });
   }
 
   getHumidity():any{

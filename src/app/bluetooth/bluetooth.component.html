@@ -1,2 +1,3 @@
 <p *ngIf="!isBluetoothSupported">Bluetooth API not supported in this browser</p>
-<button mat-raised-button *ngIf="isBluetoothSupported" (click)="connectBluetooth()" color="accent">Connect to device</button>
+<p *ngIf="connected"><b>Connected to device</b></p>
+<button mat-raised-button *ngIf="isBluetoothSupported && !connected" (click)="connectBluetooth()" color="accent">Connect to device</button>

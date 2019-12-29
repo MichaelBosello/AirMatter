@@ -10,6 +10,7 @@ import {BluetoothService} from './bluetooth.service';
 export class BluetoothComponent implements OnInit {
 
   private isBluetoothSupported: boolean = true;
+  private connected = false;
 
   @Output() nextEvent = new EventEmitter<string>();
 
@@ -22,6 +23,7 @@ export class BluetoothComponent implements OnInit {
   connectBluetooth() {
     this.bluetoothService.connectBluetooth().then( connected =>{
       if(connected){
+        this.connected = connected;
         this.nextEvent.emit();
         /*this.bluetoothService.getHumidity().then(value => {
           console.log('Humidity: ' + value);
