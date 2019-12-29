@@ -16,9 +16,9 @@
     <input matInput type="email" placeholder="Email" [(ngModel)]="email" name="email">
   </mat-form-field>
 
-  <button mat-raised-button *ngIf="isLogin" (click)="login()" [disabled]="buttonDisabled">Login</button>
+  <button mat-raised-button *ngIf="isLogin" (click)="login()" [disabled]="buttonDisabled" color="accent">Login</button>
 
-  <button mat-raised-button *ngIf="!isLogin" (click)="register()" [disabled]="buttonDisabled">Register</button>
+  <button mat-raised-button *ngIf="!isLogin" (click)="register()" [disabled]="buttonDisabled" color="accent">Register</button>
 
 </form>
 

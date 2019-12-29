@@ -16,8 +16,8 @@ const httpOptions = {
 })
 export class LoginService {
 
-  private loginUrl = "/api/v1/login"
-  private registerUrl = "/api/v1/register"
+  private loginUrl = "/api/v1/login";
+  private registerUrl = "/api/v1/register";
 
   private user: User;
   
@@ -68,5 +68,5 @@ export class LoginService {
     // return an observable with a user-facing error message
     return throwError(
       "A network error occurred, check your connection and try again");
-  };
+  }
 }

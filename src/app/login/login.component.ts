@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { LoginService } from './login.service';
 import { User } from './user';
 
@@ -20,6 +20,8 @@ export class LoginComponent implements OnInit {
 
   public user: User;
 
+  @Output() nextEvent = new EventEmitter<string>();
+
   constructor(private loginService: LoginService, private snackBar: MatSnackBar) { }
 
   ngOnInit() {
@@ -28,21 +30,29 @@ export class LoginComponent implements OnInit {
   login(){
     this.buttonDisabled = true;
     this.loginService.login(this.username, this.password)
-      .subscribe(user => this.user = user,
-        error => {this.snackBar.open(error, "", {
-          duration: 2600,
+      .subscribe(
+        user => {
+          this.user = user;
+          this.nextEvent.emit();
+        },
+        error => {
+          this.snackBar.open(error, "", { duration: 2600 })
+          this.buttonDisabled = false;
         });
-        this.buttonDisabled = false});
   }
 
   register(){
     this.buttonDisabled = true;
     this.loginService.register(this.username, this.password, this.email)
-      .subscribe(user => this.user = user,
-        error => {this.snackBar.open(error, "", {
-          duration: 2600,
+      .subscribe(
+        user => {
+          this.user = user;
+          this.nextEvent.emit();
+        },
+        error => {
+          this.snackBar.open(error, "", { duration: 2600 })
+          this.buttonDisabled = false
         });
-        this.buttonDisabled = false});
   }
 
 }

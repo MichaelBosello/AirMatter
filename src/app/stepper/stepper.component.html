@@ -1,0 +1,37 @@
+<mat-vertical-stepper *ngIf="mobile" #stepper>
+  <mat-step [completed]="false">
+      <ng-template matStepLabel>Log-in</ng-template>
+      <app-login (nextEvent)="nextStep()"></app-login>
+  </mat-step>
+  <mat-step [completed]="false">
+      <ng-template matStepLabel>Connect to device</ng-template>
+      <p>Connect to the device that will senses the environment</p> 
+      <app-bluetooth (nextEvent)="nextStep()"></app-bluetooth>
+  </mat-step>
+  <mat-step [completed]="false">
+    <ng-template matStepLabel>Play</ng-template>
+    <div>
+      <p>Now, you are ready to play</p> 
+      <button mat-raised-button color="accent">Play!</button>
+    </div>
+  </mat-step>
+</mat-vertical-stepper>
+
+<mat-horizontal-stepper *ngIf="!mobile" #stepper>
+  <mat-step [completed]="false">
+      <ng-template matStepLabel>Log-in</ng-template>
+      <app-login (nextEvent)="nextStep()"></app-login>
+  </mat-step>
+  <mat-step [completed]="false">
+      <ng-template matStepLabel>Connect to device</ng-template>
+      <p>Connect to the device that will senses the environment</p> 
+      <app-bluetooth (nextEvent)="nextStep()"></app-bluetooth>
+  </mat-step>
+  <mat-step [completed]="false">
+    <ng-template matStepLabel>Play</ng-template>
+    <div>
+      <p>Now, you are ready to play</p> 
+      <button mat-raised-button color="accent">Play!</button>
+    </div>
+  </mat-step>
+</mat-horizontal-stepper>
