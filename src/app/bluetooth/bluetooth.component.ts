@@ -18,6 +18,7 @@ export class BluetoothComponent implements OnInit {
 
   ngOnInit(){
     this.isBluetoothSupported = this.bluetoothService.isBluetoothSupported();
+    this.connected = this.bluetoothService.isConnected();
   }
 
   connectBluetooth() {
