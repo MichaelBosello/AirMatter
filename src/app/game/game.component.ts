@@ -13,7 +13,9 @@ export class GameComponent implements OnInit {
   constructor(private bluetoothService: BluetoothService, private loginService: LoginService) { }
 
   ngOnInit() {
-    
+    if(!this.loginService.isLogged()){
+      window.location.href = '/#play';
+    }
   }
 
 }

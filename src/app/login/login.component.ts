@@ -25,6 +25,7 @@ export class LoginComponent implements OnInit {
   constructor(private loginService: LoginService, private snackBar: MatSnackBar) { }
 
   ngOnInit() {
+    this.user = this.loginService.getUser();
   }
 
   login(){

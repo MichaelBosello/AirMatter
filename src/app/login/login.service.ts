@@ -23,7 +23,7 @@ export class LoginService {
   
   constructor(private http: HttpClient) { }
 
-  login (username: String, password: String): Observable<User> {
+  login(username: String, password: String): Observable<User> {
     var loginUser = {
       username: username,
       password: password
@@ -36,7 +36,7 @@ export class LoginService {
       );
   }
 
-  register (username: String, password: String, email: String): Observable<User> {
+  register(username: String, password: String, email: String): Observable<User> {
     var signupUser = {
       username: username,
       password: password,
@@ -44,10 +44,18 @@ export class LoginService {
     }
     return this.http.post<User>(this.registerUrl, signupUser, httpOptions)
       .pipe(
-        retry(3),
+        //retry(3),
         map(user => this.user = user),
         catchError(this.handleError)
       );
+  }
+
+  isLogged(): boolean {
+    return this.user != null;
+  }
+
+  getUser(): User {
+    return this.user;
   }
 
   private handleError(error: HttpErrorResponse) {
