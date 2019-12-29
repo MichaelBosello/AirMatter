@@ -24,6 +24,7 @@ import { HomeComponent } from './home/home.component';
 
 import {BluetoothService} from './bluetooth/bluetooth.service';
 import {LoginService} from './login/login.service';
+import { MapService } from './map/map.service';
 
 
 
@@ -52,7 +53,7 @@ import {LoginService} from './login/login.service';
     MatToolbarModule,
     MatCardModule
   ],
-  providers: [BluetoothService, LoginService],
+  providers: [BluetoothService, LoginService, MapService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

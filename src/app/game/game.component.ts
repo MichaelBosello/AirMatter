@@ -16,10 +16,10 @@ export class GameComponent implements OnInit {
 
   ngOnInit() {
     if(!this.loginService.isLogged()){
-      window.location.href = '/#play';
+      //window.location.href = '/#play';
     }
     if(!this.bluetoothService.isConnected()){
-      this.showNotConnectedBar();
+      //this.showNotConnectedBar();
     }
   }
 
