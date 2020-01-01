@@ -8,6 +8,7 @@ import {MatDialog} from '@angular/material/dialog';
 
 import { User } from '../user/user';
 import { LevelupComponent } from '../levelup/levelup.component';
+import { GameService } from './game.service';
 
 @Component({
   selector: 'app-game',
@@ -24,7 +25,8 @@ export class GameComponent implements OnInit {
   constructor(private bluetoothService: BluetoothService,
       private loginService: LoginService,
       private snackBar: MatSnackBar,
-      private dialog: MatDialog) { }
+      private dialog: MatDialog,
+      private gameService: GameService) { }
 
   ngOnInit() {
     if(!this.loginService.isLogged()){
@@ -35,6 +37,9 @@ export class GameComponent implements OnInit {
     }
     this.user = this.loginService.getUser();
     this.userLevel = this.user.level;
+
+    this.gameService.loadUserProgress();
+
     this.updateUserStatus()
     this.user.subscribeUserProgress( this.updateUserStatus.bind(this) );
   }
