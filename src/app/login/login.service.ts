@@ -4,7 +4,7 @@ import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http
 import { Observable, throwError } from 'rxjs';
 import { catchError, map, retry } from 'rxjs/operators';
 
-import { User } from './user';
+import { User } from '../user/user';
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -31,7 +31,7 @@ export class LoginService {
     return this.http.post<User>(this.loginUrl, loginUser, httpOptions)
       .pipe(
         //retry(3),
-        map(user => this.user = user),
+        map(user => this.user = new User(user)),
         catchError(this.handleError)
       );
   }
@@ -40,12 +40,16 @@ export class LoginService {
     var signupUser = {
       username: username,
       password: password,
-      email: email
+      email: email,
+      experience: 0,
+      level: 1,
+      totalDistance: 0,
+      routes: []
     }
     return this.http.post<User>(this.registerUrl, signupUser, httpOptions)
       .pipe(
         //retry(3),
-        map(user => this.user = user),
+        map(user => this.user = new User(user)),
         catchError(this.handleError)
       );
   }

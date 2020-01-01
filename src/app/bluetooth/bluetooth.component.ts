@@ -26,15 +26,6 @@ export class BluetoothComponent implements OnInit {
       if(connected){
         this.connected = connected;
         this.nextEvent.emit();
-        /*this.bluetoothService.getHumidity().then(value => {
-          console.log('Humidity: ' + value);
-        })
-        this.bluetoothService.getTemperature().then(value => {
-          console.log('Temperature: ' + value);
-        })
-        this.bluetoothService.getPollution().then(value => {
-          console.log('Pollution: ' + value);
-        })*/
       }
     });
   }

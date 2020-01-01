@@ -1,6 +1,6 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { LoginService } from './login.service';
-import { User } from './user';
+import { User } from '../user/user';
 
 import {MatSnackBar} from '@angular/material/snack-bar';
 

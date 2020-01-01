@@ -9,8 +9,15 @@ export class MapService {
 
   map: google.maps.Map;
   marker: google.maps.Marker;
+  position: google.maps.LatLng;
 
-  constructor() { }
+  positionUpdateCallback: (lat1: number, lng1: number, lat2: number, lng2: number) => any;
+
+  heatMapDataHigh: google.maps.MVCArray<google.maps.LatLng> = new google.maps.MVCArray();
+  heatMapDataMid: google.maps.MVCArray<google.maps.LatLng> = new google.maps.MVCArray();
+  heatMapDataLow: google.maps.MVCArray<google.maps.LatLng> = new google.maps.MVCArray();
+
+  constructor() {}
 
   isGeolocationSupported(): boolean {
     if (navigator.geolocation) {
@@ -24,9 +31,10 @@ export class MapService {
     navigator.geolocation.getCurrentPosition(
       (position: Position) => {
         let pos = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+        this.position = pos;
         const mapProperties = {
           center: pos,
-          zoom: 15,
+          zoom: 16,
           styles: this.mapStyle,
           disableDefaultUI: true,
           zoomControl: true,
@@ -41,6 +49,29 @@ export class MapService {
           position: pos,
           map: this.map,
         });
+
+        new google.maps.visualization.HeatmapLayer({
+            data: this.heatMapDataHigh,
+            radius: 22,
+            gradient: this.red,
+            map: this.map,
+            opacity: 1
+        });
+        new google.maps.visualization.HeatmapLayer({
+            data: this.heatMapDataMid,
+            radius: 22,
+            gradient: this.yellow,
+            map: this.map,
+            opacity: 1
+        });
+        new google.maps.visualization.HeatmapLayer({
+            data: this.heatMapDataLow,
+            radius: 22,
+            gradient: this.green,
+            map: this.map,
+            opacity: 1
+        });
+
         this.startTracking(errorCallBack);
       },
       (error: PositionError) => {
@@ -48,12 +79,30 @@ export class MapService {
       })
   }
 
+  watchPosition( callback: (lat1: number, lng1: number, lat2: number, lng2: number) => any ){
+    this.positionUpdateCallback = callback;
+  }
+
+  addHeatmapPoint(lat: number, lng: number, layer: number){
+    if(layer == 0){
+      this.heatMapDataLow.push(new google.maps.LatLng(lat, lng));
+    }
+    if(layer == 1){
+      this.heatMapDataMid.push(new google.maps.LatLng(lat, lng));
+    }
+    if(layer == 2){
+      this.heatMapDataHigh.push(new google.maps.LatLng(lat, lng));
+    }
+  }
+
   private startTracking(errorCallBack: (error: string) => any){
     navigator.geolocation.watchPosition( 
       (position: Position) => {
-        let pos = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
-        this.marker.setPosition(pos);
-        this.map.panTo(pos);
+        let newPos = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+        this.marker.setPosition(newPos);
+        this.map.panTo(newPos);
+        this.positionUpdateCallback(this.position.lat(), this.position.lng(), newPos.lat(), newPos.lng());
+        this.position = newPos;
       }, 
       (error: PositionError) => {
         errorCallBack(this.getPositionErrorMessage(error.code));
@@ -75,10 +124,10 @@ export class MapService {
     }
   }
 
-  private calculateDistance(lat1: number, lon1: number, lat2: number, lon2: number): number {
+  calculateDistance(lat1: number, lng1: number, lat2: number, lng2: number): number {
     var R = 6371; // km
     var dLat = this.toRad(lat2 - lat1);
-    var dLon = this.toRad(lon2 - lon1); 
+    var dLon = this.toRad(lng2 - lng1); 
     var a = Math.sin(dLat / 2) * Math.sin(dLat / 2) +
             Math.cos(this.toRad(lat1)) * Math.cos(this.toRad(lat2)) * 
             Math.sin(dLon / 2) * Math.sin(dLon / 2); 
@@ -94,6 +143,21 @@ export class MapService {
 
 
 
+
+  private yellow = [
+    'rgba(240,230,140 ,0)',
+    'rgba(240,230,140 ,1)'
+  ];
+
+  private red = [
+    'rgba(255, 0, 0,0)',
+    'rgba(255, 0, 0, 1)'
+  ];
+
+  private green = [
+    'rgba(0, 255, 0, 0)',
+    'rgba(0, 255, 0, 1)'
+  ];
 
   private mapStyle: google.maps.MapTypeStyle[] = [
     {

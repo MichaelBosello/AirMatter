@@ -15,16 +15,19 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatStepperModule} from '@angular/material/stepper';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatCardModule} from '@angular/material/card';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import { GameComponent } from './game/game.component';
 import { MapComponent } from './map/map.component';
 import { HomeComponent } from './home/home.component';
+import { SpinnerContainer } from './spinner-container/spinner-container';
 
 import {BluetoothService} from './bluetooth/bluetooth.service';
 import {LoginService} from './login/login.service';
 import { MapService } from './map/map.service';
+import { GameService } from './game/game.service';
 
 
 
@@ -36,7 +39,8 @@ import { MapService } from './map/map.service';
     StepperComponent,
     GameComponent,
     MapComponent,
-    HomeComponent
+    HomeComponent,
+    SpinnerContainer
   ],
   imports: [
     BrowserModule,
@@ -51,9 +55,10 @@ import { MapService } from './map/map.service';
     MatSnackBarModule,
     MatStepperModule,
     MatToolbarModule,
-    MatCardModule
+    MatCardModule,
+    MatProgressSpinnerModule
   ],
-  providers: [BluetoothService, LoginService, MapService],
+  providers: [BluetoothService, LoginService, MapService, GameService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

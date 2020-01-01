@@ -1,1 +1,33 @@
-<app-map></app-map>
+<div class="w3-sidebar w3-bar-block w3-collapse w3-card w3-animate-left flex-sidenav" id="sidebarL">
+  <button mat-raised-button class="w3-hide-large" onclick='document.getElementById("sidebarL").style.display = "none"'>back</button>
+</div>
+
+<div class="w3-sidebar w3-bar-block w3-collapse w3-card w3-animate-right flex-sidenav" id="sidebarR">
+  <spinner-container
+      color="accent"
+      diameter="248"
+      strokeWidth="24"
+      [value]="spinnerProgress"
+      [displayWith]="spinnerLabel">
+  </spinner-container>
+  <p>Next level: {{user.experience}}/{{user.getMaxExperience()}} XP</p>
+  <button mat-raised-button class=" w3-hide-large" onclick='document.getElementById("sidebarR").style.display = "none"'>back</button>
+</div>
+
+<div class="w3-teal flex-header w3-hide-large">
+  <button class="w3-button w3-teal w3-hide-large" onclick='document.getElementById("sidebarL").style.display = "flex";'><i class="material-icons">menu</i></button>
+  <div class="name-display"><p>Beginner</p><p class="username">{{user.username}}</p></div>
+  <button class="w3-button w3-teal w3-hide-large" onclick='document.getElementById("sidebarR").style.display = "flex";'>
+    <div class="spinner-container">
+      <spinner-container
+      color="accent"
+      diameter="60"
+      strokeWidth="5"
+      [value]="spinnerProgress"
+      [displayWith]="spinnerLabel">
+  </spinner-container>
+    </div>
+  </button>
+</div>
+
+<div id="gamemap"><app-map></app-map></div>

@@ -1,0 +1,71 @@
+#gamemap{
+  height: 100%;
+  width: 50%;
+  margin-left: 25%;
+}
+
+.flex-sidenav{
+  display: flex;
+  width: 25%;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  padding-top: 5%;
+}
+
+#sidebarR{
+  right:0;
+}
+
+@media screen and (max-width: 992px) {
+  #gamemap{
+    height: -webkit-calc(100% - 76px);
+    height:    -moz-calc(100% - 76px);
+    height:         calc(100% - 76px);
+    width: 100%;
+    margin-left: 0%;
+  }
+
+  .flex-sidenav{
+    width: 100%;
+    display: none;
+  }
+}
+
+//header
+
+.flex-header {
+  display: flex;
+  justify-content: space-between;
+}
+
+//buttons
+
+.w3-button{
+  display: flex;
+  justify-content: center;
+  width: 84px;
+  height: 76px;
+  padding: 8px;
+}
+
+.material-icons{
+  font-size: 30px;
+}
+
+
+//name
+
+.username{
+  font-size: 20px;
+}
+
+.name-display{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center; 
+}
+.name-display > p{
+  margin: 0;
+}
