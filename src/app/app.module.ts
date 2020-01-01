@@ -16,6 +16,7 @@ import {MatStepperModule} from '@angular/material/stepper';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatCardModule} from '@angular/material/card';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import {MatDialogModule} from '@angular/material/dialog';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
@@ -28,6 +29,7 @@ import {BluetoothService} from './bluetooth/bluetooth.service';
 import {LoginService} from './login/login.service';
 import { MapService } from './map/map.service';
 import { GameService } from './game/game.service';
+import { LevelupComponent } from './levelup/levelup.component';
 
 
 
@@ -40,7 +42,8 @@ import { GameService } from './game/game.service';
     GameComponent,
     MapComponent,
     HomeComponent,
-    SpinnerContainer
+    SpinnerContainer,
+    LevelupComponent
   ],
   imports: [
     BrowserModule,
@@ -56,9 +59,11 @@ import { GameService } from './game/game.service';
     MatStepperModule,
     MatToolbarModule,
     MatCardModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    MatDialogModule
   ],
   providers: [BluetoothService, LoginService, MapService, GameService],
+  entryComponents: [LevelupComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

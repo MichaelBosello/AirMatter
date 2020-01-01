@@ -17,7 +17,7 @@ export class User {
     this.routes = json.routes;
   }
 
-  private experienceRate = 10;
+  private experienceRate = 100;
   private maxExp = 600;
   private callback = () => {};
 
@@ -26,7 +26,7 @@ export class User {
     this.experience += distance * this.experienceRate;
     this.routes.push(route);
 
-    if(this.experience >= this.maxExp){
+    while(this.experience >= this.maxExp){
       this.experience -= this.maxExp;
       this.level += 1;
     }

@@ -4,7 +4,10 @@ import {BluetoothService} from '../bluetooth/bluetooth.service';
 import {LoginService} from '../login/login.service';
 
 import {MatSnackBar} from '@angular/material/snack-bar';
+import {MatDialog} from '@angular/material/dialog';
+
 import { User } from '../user/user';
+import { LevelupComponent } from '../levelup/levelup.component';
 
 @Component({
   selector: 'app-game',
@@ -16,8 +19,12 @@ export class GameComponent implements OnInit {
   private user: User;
   private spinnerProgress: number = 0;
   private spinnerLabel: string = "Lvl ";
+  private userLevel: number;
 
-  constructor(private bluetoothService: BluetoothService, private loginService: LoginService, private snackBar: MatSnackBar) { }
+  constructor(private bluetoothService: BluetoothService,
+      private loginService: LoginService,
+      private snackBar: MatSnackBar,
+      private dialog: MatDialog) { }
 
   ngOnInit() {
     if(!this.loginService.isLogged()){
@@ -27,6 +34,7 @@ export class GameComponent implements OnInit {
       this.showNotConnectedBar();
     }
     this.user = this.loginService.getUser();
+    this.userLevel = this.user.level;
     this.updateUserStatus()
     this.user.subscribeUserProgress( this.updateUserStatus.bind(this) );
   }
@@ -34,6 +42,21 @@ export class GameComponent implements OnInit {
   private updateUserStatus(){
     this.spinnerProgress = this.user.experience / this.user.getMaxExperience() * 100;
     this.spinnerLabel = "Lvl " + this.user.level
+
+    if(this.userLevel < this.user.level){
+      this.levelup();
+      this.userLevel = this.user.level;
+    }
+  }
+
+  private levelup(){
+    this.dialog.open(LevelupComponent, {
+      height: '92%',
+      maxHeight: '406px',
+      width: '90%',
+      maxWidth: '450px',
+      panelClass: 'custom-dialog-container'
+    });
   }
 
   private showNotConnectedBar(){

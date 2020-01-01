@@ -17,6 +17,10 @@
   right:0;
 }
 
+.flex-header {
+  display: none;
+}
+
 @media screen and (max-width: 992px) {
   #gamemap{
     height: -webkit-calc(100% - 76px);
@@ -30,14 +34,19 @@
     width: 100%;
     display: none;
   }
+
+  //header
+  .flex-header {
+    display: flex;
+    justify-content: space-between;
+  }
+}
+@media screen and (min-width: 993px) {
+  .flex-sidenav{
+    display: flex !important;
+  }
 }
 
-//header
-
-.flex-header {
-  display: flex;
-  justify-content: space-between;
-}
 
 //buttons
 
