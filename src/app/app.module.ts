@@ -32,6 +32,7 @@ import { MapService } from './map/map.service';
 import { GameService } from './game/game.service';
 import { LevelupComponent } from './levelup/levelup.component';
 import { TitleComponent } from './item/title/title.component';
+import { AchievementsComponent } from './item/achievements/achievements.component';
 
 
 
@@ -46,7 +47,8 @@ import { TitleComponent } from './item/title/title.component';
     HomeComponent,
     SpinnerContainer,
     LevelupComponent,
-    TitleComponent
+    TitleComponent,
+    AchievementsComponent
   ],
   imports: [
     BrowserModule,

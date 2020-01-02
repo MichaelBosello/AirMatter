@@ -26,16 +26,18 @@ export class TitleComponent implements OnInit {
   constructor(private loginService: LoginService, private itemService: ItemService) { }
 
   ngOnInit() {
-    if(!this.loginService.isLogged()){
-      window.location.href = '/#play';
-    }
     this.user = this.loginService.getUser();
+    this.loadUserTitles();
+    this.userTitle = this.user.title;
+    this.user.subscribeUserProgress(this.loadUserTitles.bind(this));
+  }
+
+  private loadUserTitles(){
     for(var i = 0; i < this.titles.length; i++){
       if(this.user.level > i){
         this.titles[i].obtained = true;
       }
     }
-    this.userTitle = this.user.title;
   }
 
   changeTitle(event: MatRadioChange){

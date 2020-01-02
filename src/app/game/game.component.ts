@@ -18,6 +18,7 @@ import { GameService } from './game.service';
 export class GameComponent implements OnInit {
 
   @ViewChild('titleWindow', {static: false}) titleWindow: ElementRef;
+  @ViewChild('achievementWindow', {static: false}) achievementWindow: ElementRef;
 
   private user: User;
   private spinnerProgress: number = 0;
@@ -48,6 +49,7 @@ export class GameComponent implements OnInit {
 
   back(){
     this.titleWindow.nativeElement.style.display = "none";
+    this.achievementWindow.nativeElement.style.display = "none";
   }
 
   private updateUserStatus(){

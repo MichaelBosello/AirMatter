@@ -1,0 +1,30 @@
+.achievement-group {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.grayed{
+  background-color: rgb(184, 180, 180);
+  opacity: .35;
+}
+
+.ac-card{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 280px;
+  margin: 5px;
+}
+
+.ac-card img{
+  width: 100px;
+  margin-right: 16px;
+  border-radius: 50%;
+}
+
+.back-button{
+  margin-top: 6px;
+  margin-bottom: 8px;
+}

@@ -21,7 +21,7 @@ export class User {
 
   private experienceRate = 100;
   private maxExp = 600;
-  private callback = () => {};
+  private callback: { (): void }[] = [];
 
   addRoute(route: Route, distance: number){
     this.totalDistance += distance;
@@ -32,13 +32,13 @@ export class User {
       this.experience -= this.maxExp;
       this.level += 1;
     }
-
-    this.callback();
-
+    this.callback.forEach(c => {
+      c();
+    });
   }
 
   subscribeUserProgress( callback: () => any ){
-    this.callback = callback;
+    this.callback.push(callback);
   }
 
   getMaxExperience(){

@@ -1,0 +1,11 @@
+<button mat-button class="back-button" (click)="back.emit()">
+  <i class="material-icons">arrow_back</i>
+</button>
+<div class="achievement-group">
+  <mat-card *ngFor="let achievement of achievements" 
+    [class.grayed]="!achievement.obtained" [class.background-primary]="achievement.obtained"
+    class="ac-card">
+    <img [src]="achievement.src">
+    {{achievement.name}}
+  </mat-card>
+</div>
