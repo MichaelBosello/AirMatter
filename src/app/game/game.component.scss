@@ -11,10 +11,16 @@
   justify-content: flex-start;
   align-items: center;
   padding-top: 5%;
+  background-color: rgba(250,250,250,1);
 }
 
 #sidebarR{
   right:0;
+}
+
+#sidebarL button{
+  margin-top: 45px;
+  width: 180px;
 }
 
 .flex-header {
@@ -77,4 +83,15 @@
 }
 .name-display > p{
   margin: 0;
+}
+
+#titleWindow{
+  display: none;
+  position: absolute;
+  top:0;
+  left:0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(250,250,250,1);
+  z-index: 1;
 }

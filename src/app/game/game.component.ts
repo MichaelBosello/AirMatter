@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 
 import {BluetoothService} from '../bluetooth/bluetooth.service';
 import {LoginService} from '../login/login.service';
@@ -16,6 +16,8 @@ import { GameService } from './game.service';
   styleUrls: ['./game.component.scss']
 })
 export class GameComponent implements OnInit {
+
+  @ViewChild('titleWindow', {static: false}) titleWindow: ElementRef;
 
   private user: User;
   private spinnerProgress: number = 0;
@@ -42,6 +44,10 @@ export class GameComponent implements OnInit {
 
     this.updateUserStatus()
     this.user.subscribeUserProgress( this.updateUserStatus.bind(this) );
+  }
+
+  back(){
+    this.titleWindow.nativeElement.style.display = "none";
   }
 
   private updateUserStatus(){

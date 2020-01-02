@@ -17,6 +17,7 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatCardModule} from '@angular/material/card';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {MatDialogModule} from '@angular/material/dialog';
+import {MatRadioModule} from '@angular/material/radio';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
@@ -30,6 +31,7 @@ import {LoginService} from './login/login.service';
 import { MapService } from './map/map.service';
 import { GameService } from './game/game.service';
 import { LevelupComponent } from './levelup/levelup.component';
+import { TitleComponent } from './item/title/title.component';
 
 
 
@@ -43,7 +45,8 @@ import { LevelupComponent } from './levelup/levelup.component';
     MapComponent,
     HomeComponent,
     SpinnerContainer,
-    LevelupComponent
+    LevelupComponent,
+    TitleComponent
   ],
   imports: [
     BrowserModule,
@@ -60,7 +63,8 @@ import { LevelupComponent } from './levelup/levelup.component';
     MatToolbarModule,
     MatCardModule,
     MatProgressSpinnerModule,
-    MatDialogModule
+    MatDialogModule,
+    MatRadioModule
   ],
   providers: [BluetoothService, LoginService, MapService, GameService],
   entryComponents: [LevelupComponent],

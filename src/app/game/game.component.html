@@ -1,6 +1,9 @@
 <div class="w3-sidebar w3-bar-block w3-card w3-animate-left flex-sidenav" id="sidebarL">
-  <div class="name-display"><p>Beginner</p><p class="username">{{user.username}}</p></div>
-  <button mat-raised-button class="w3-hide-large" onclick='document.getElementById("sidebarL").style.display = "none"'>back</button>
+  <div class="name-display"><p>{{user.title}}</p><p class="username">{{user.username}}</p></div>
+  <button mat-raised-button color="primary"
+    onclick='document.getElementById("titleWindow").style.display = "block"'>Titles</button>
+  <button mat-raised-button class="w3-hide-large" 
+    onclick='document.getElementById("sidebarL").style.display = "none"'>back</button>
 </div>
 
 <div class="w3-sidebar w3-bar-block w3-card w3-animate-right flex-sidenav" id="sidebarR">
@@ -17,7 +20,7 @@
 
 <div class="flex-header background-primary">
   <button class="w3-button background-primary" onclick='document.getElementById("sidebarL").style.display = "flex";'><i class="material-icons">menu</i></button>
-  <div class="name-display"><p>Beginner</p><p class="username">{{user.username}}</p></div>
+  <div class="name-display"><p>{{user.title}}</p><p class="username">{{user.username}}</p></div>
   <button class="w3-button background-primary" onclick='document.getElementById("sidebarR").style.display = "flex";'>
     <div class="spinner-container">
       <spinner-container
@@ -32,3 +35,5 @@
 </div>
 
 <div id="gamemap"><app-map></app-map></div>
+
+<div #titleWindow id="titleWindow"><app-title (back)="back()"></app-title></div>

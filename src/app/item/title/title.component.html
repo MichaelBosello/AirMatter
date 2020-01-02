@@ -1,0 +1,13 @@
+<button mat-button class="back-button" (click)="back.emit()"><i class="material-icons">arrow_back</i></button>
+<mat-radio-group
+  aria-labelledby="chose title"
+  class="radio-group"
+  [(ngModel)]="userTitle">
+  <mat-card *ngFor="let title of titles" 
+    [class.grayed]="!title.obtained" [class.background-primary]="title.obtained" class="title-card">
+    <mat-radio-button 
+      [value]="title.title" [disabled]="!title.obtained" (change)="changeTitle($event)">
+      {{title.title}}
+    </mat-radio-button>
+  </mat-card>
+</mat-radio-group>

@@ -7,6 +7,7 @@ export class User {
   experience: number;
   totalDistance: number;
   routes: Route[];
+  title: string;
 
   constructor(json:any) {
     this.username = json.username;
@@ -15,6 +16,7 @@ export class User {
     this.experience = json.experience;
     this.totalDistance = json.totalDistance;
     this.routes = json.routes;
+    this.title = json.title;
   }
 
   private experienceRate = 100;

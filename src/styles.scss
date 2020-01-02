@@ -20,3 +20,7 @@ $accent:  mat-palette($mat-pink);
   background-color: mat-color($accent);
   color: white;
 }
+
+.mat-radio-button .mat-radio-outer-circle {
+  border-color: white;
+}
