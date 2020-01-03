@@ -45,9 +45,15 @@ export class MapService {
           fullscreenControl: false
         };
         this.map = new google.maps.Map(mapElement.nativeElement, mapProperties);
+
+        var icon = {
+          url: "assets/image/marker/marker1.png",
+          scaledSize: new google.maps.Size(50, 50)
+        };
         this.marker = new google.maps.Marker({
           position: pos,
           map: this.map,
+          icon: icon
         });
 
         new google.maps.visualization.HeatmapLayer({
