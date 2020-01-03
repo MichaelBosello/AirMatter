@@ -1,0 +1,14 @@
+<button mat-button class="back-button" (click)="back.emit()"><i class="material-icons">arrow_back</i></button>
+<mat-radio-group
+  aria-labelledby="chose marker"
+  class="item-group"
+  [(ngModel)]="userMarker">
+  <mat-card *ngFor="let marker of markers" 
+    [class.grayed]="!marker.obtained" [class.background-primary]="marker.obtained" class="image-card">
+    <mat-radio-button 
+      [value]="marker.src" [disabled]="!marker.obtained" (change)="changeMarker($event)">
+      <img [src]="marker.src">
+      {{marker.name}}
+    </mat-radio-button>
+  </mat-card>
+</mat-radio-group>

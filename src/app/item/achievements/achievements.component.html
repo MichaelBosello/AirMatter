@@ -4,7 +4,7 @@
 <div class="item-group">
   <mat-card *ngFor="let achievement of achievements" 
     [class.grayed]="!achievement.obtained" [class.background-primary]="achievement.obtained"
-    class="ac-card">
+    class="image-card">
     <img [src]="achievement.src">
     {{achievement.name}}
   </mat-card>

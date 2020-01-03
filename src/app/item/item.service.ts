@@ -15,4 +15,10 @@ export class ItemService {
     this.updateUserService.updateUser();
   }
 
+  setMarker(marker: string){
+    let user = this.loginService.getUser();
+    user.marker = marker;
+    this.updateUserService.updateUser();
+  }
+
 }

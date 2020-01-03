@@ -1,6 +1,7 @@
 import { Injectable, ElementRef } from '@angular/core';
 
 import {} from 'googlemaps';
+import { LoginService } from '../login/login.service';
 
 @Injectable({
   providedIn: 'root'
@@ -17,7 +18,7 @@ export class MapService {
   heatMapDataMid: google.maps.MVCArray<google.maps.LatLng> = new google.maps.MVCArray();
   heatMapDataLow: google.maps.MVCArray<google.maps.LatLng> = new google.maps.MVCArray();
 
-  constructor() {}
+  constructor(private loginService: LoginService) {}
 
   isGeolocationSupported(): boolean {
     if (navigator.geolocation) {
@@ -46,8 +47,13 @@ export class MapService {
         };
         this.map = new google.maps.Map(mapElement.nativeElement, mapProperties);
 
+        var marker = this.loginService.getUser().marker;
+        if(!marker || marker == ""){
+          marker = "assets/image/marker/marker1.png";
+        }
+
         var icon = {
-          url: "assets/image/marker/marker1.png",
+          url: marker,
           scaledSize: new google.maps.Size(50, 50)
         };
         this.marker = new google.maps.Marker({
@@ -87,6 +93,14 @@ export class MapService {
 
   watchPosition( callback: (lat1: number, lng1: number, lat2: number, lng2: number) => any ){
     this.positionUpdateCallback = callback;
+  }
+
+  changeIcon(url: string){
+    var icon = {
+      url: url,
+      scaledSize: new google.maps.Size(50, 50)
+    };
+    this.marker.setIcon(icon);
   }
 
   addHeatmapPoint(lat: number, lng: number, layer: number){

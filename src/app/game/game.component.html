@@ -3,6 +3,8 @@
   <button mat-raised-button color="primary"
     onclick='document.getElementById("titleWindow").style.display = "block"'>Titles</button>
   <button mat-raised-button color="primary"
+    onclick='document.getElementById("markerWindow").style.display = "block"'>Icon</button>
+  <button mat-raised-button color="primary"
     onclick='document.getElementById("achievementWindow").style.display = "block"'>Achievements</button>
   <button mat-raised-button class="w3-hide-large" 
     onclick='document.getElementById("sidebarL").style.display = "none"'>back</button>
@@ -39,6 +41,9 @@
 <div id="gamemap"><app-map></app-map></div>
 
 <div #titleWindow id="titleWindow"><app-title (back)="back()"></app-title></div>
+<div #markerWindow id="markerWindow">
+  <app-marker (back)="back()"></app-marker>
+</div>
 <div #achievementWindow id="achievementWindow">
   <app-achievements (back)="back()"></app-achievements>
 </div>

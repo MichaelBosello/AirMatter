@@ -33,6 +33,7 @@ import { GameService } from './game/game.service';
 import { LevelupComponent } from './levelup/levelup.component';
 import { TitleComponent } from './item/title/title.component';
 import { AchievementsComponent } from './item/achievements/achievements.component';
+import { MarkerComponent } from './item/marker/marker.component';
 
 
 
@@ -48,7 +49,8 @@ import { AchievementsComponent } from './item/achievements/achievements.componen
     SpinnerContainer,
     LevelupComponent,
     TitleComponent,
-    AchievementsComponent
+    AchievementsComponent,
+    MarkerComponent
   ],
   imports: [
     BrowserModule,

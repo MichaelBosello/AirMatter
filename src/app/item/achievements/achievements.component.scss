@@ -1,16 +1,1 @@
 @import "../item.scss";
-
-.ac-card{
-  @extend .item-card;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 280px;
-}
-
-.ac-card img{
-  width: 100px;
-  margin-right: 16px;
-  border-radius: 50%;
-}
-

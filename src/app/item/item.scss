@@ -18,3 +18,17 @@
 .item-card{
   margin: 5px;
 }
+
+.image-card{
+  @extend .item-card;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  width: 280px;
+}
+
+.image-card img{
+  width: 100px;
+  margin-right: 16px;
+  border-radius: 50%;
+}
