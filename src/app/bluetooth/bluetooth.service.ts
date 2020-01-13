@@ -54,7 +54,7 @@ export class BluetoothService {
 
   getHumidity():any{
     return this.humidityCharacteristic.readValue()
-    .then(value => {console.log("h", value.getUint8(0))
+    .then(value => {
       return value.getUint8(0);
     });
   }
@@ -62,7 +62,7 @@ export class BluetoothService {
   getTemperature():any{
     return new Promise(r => setTimeout(r, 200)).then(r => {
       this.temperatureCharacteristic.readValue()
-      .then(value => {console.log("t", value.getUint8(0))
+      .then(value => {
         return value.getUint8(0);
       })
     })
@@ -72,7 +72,6 @@ export class BluetoothService {
     return new Promise(r => setTimeout(r, 400)).then(r => {
       this.pollutionCharacteristic.readValue()
       .then(value => {
-        console.log("p", value.getUint8(0))
         return value.getUint8(0);
       })
     })
