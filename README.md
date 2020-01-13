@@ -23,3 +23,5 @@
 3) Run `ng serve --proxy-config proxy.conf.json` for the front-server. 
 
 4) Navigate to `http://localhost:4200/`.
+
+5) [Optional] download and use ngrok `./ngrok http 4200 -host-header="localhost:4200"`

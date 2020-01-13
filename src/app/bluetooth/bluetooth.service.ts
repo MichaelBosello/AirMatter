@@ -54,23 +54,28 @@ export class BluetoothService {
 
   getHumidity():any{
     return this.humidityCharacteristic.readValue()
-    .then(value => {
+    .then(value => {console.log("h", value.getUint8(0))
       return value.getUint8(0);
     });
   }
 
   getTemperature():any{
-    return this.temperatureCharacteristic.readValue()
-    .then(value => {
-      return value.getUint8(0);
-    });
+    return new Promise(r => setTimeout(r, 200)).then(r => {
+      this.temperatureCharacteristic.readValue()
+      .then(value => {console.log("t", value.getUint8(0))
+        return value.getUint8(0);
+      })
+    })
   }
 
   getPollution():any{
-    return this.pollutionCharacteristic.readValue()
-    .then(value => {
-      return value.getUint8(0);
-    });
+    return new Promise(r => setTimeout(r, 400)).then(r => {
+      this.pollutionCharacteristic.readValue()
+      .then(value => {
+        console.log("p", value.getUint8(0))
+        return value.getUint8(0);
+      })
+    })
   }
 
 }

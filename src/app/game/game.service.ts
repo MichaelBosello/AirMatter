@@ -12,6 +12,7 @@ import { UpdateuserService } from '../user/updateuser.service';
 export class GameService {
 
   private user: User;
+  private lastUpdateTime = new Date().getTime();
 
   constructor(private mapService: MapService,
       private loginService: LoginService,
@@ -21,6 +22,13 @@ export class GameService {
   }
 
   addUserProgress(lat1: number, lng1: number, lat2: number, lng2: number){
+
+    var currentTime = new Date().getTime();
+    if(currentTime - this.lastUpdateTime < 500){
+      return;
+    }
+    this.lastUpdateTime = currentTime;
+
     let distance = this.mapService.calculateDistance(lat1, lng1, lat2, lng2);
     if(this.bluetoothService.isConnected && distance > 0 && distance < 300){
       let route: Route = new Route();
