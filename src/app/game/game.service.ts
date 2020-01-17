@@ -21,7 +21,7 @@ export class GameService {
     this.user = loginService.getUser();
   }
 
-  addUserProgress(lat1: number, lng1: number, lat2: number, lng2: number){
+  async addUserProgress(lat1: number, lng1: number, lat2: number, lng2: number){
 
     var currentTime = new Date().getTime();
     if(currentTime - this.lastUpdateTime < 500){
@@ -34,23 +34,17 @@ export class GameService {
       let route: Route = new Route();
       route.pointA = {lat: lat1, lng: lng1};
       route.pointB = {lat: lat2, lng: lng2};
-      Promise.all([
-        this.bluetoothService.getHumidity(),
-        this.bluetoothService.getTemperature(),
-        this.bluetoothService.getPollution()])
-      .then(values => {
-        let pm25 = values[2]
+        
+      route.humidity = await this.bluetoothService.getHumidity()
+      await this.bluetoothService.sleep(200)
+      route.temperature = await this.bluetoothService.getTemperature()
+      await this.bluetoothService.sleep(200)
+      route.pm25 = await this.bluetoothService.getPollution()
+      route.datetime = new Date();
+      this.user.addRoute(route, distance);
 
-        route.humidity = values[0];
-        route.temperature = values[1];
-        route.pm25 = pm25;
-        route.datetime = new Date();
-        this.user.addRoute(route, distance);
-
-
-        this.visualzeProgress(route);
-        this.updateUserService.updateUser();
-      })
+      this.visualzeProgress(route);
+      this.updateUserService.updateUser();
     }
   }
 

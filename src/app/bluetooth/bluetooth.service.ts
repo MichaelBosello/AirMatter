@@ -60,21 +60,21 @@ export class BluetoothService {
   }
 
   getTemperature():any{
-    return new Promise(r => setTimeout(r, 200)).then(r => {
-      this.temperatureCharacteristic.readValue()
-      .then(value => {
-        return value.getUint8(0);
-      })
-    })
+    return this.temperatureCharacteristic.readValue()
+    .then(value => {
+      return value.getUint8(0);
+    });
   }
 
   getPollution():any{
-    return new Promise(r => setTimeout(r, 400)).then(r => {
-      this.pollutionCharacteristic.readValue()
-      .then(value => {
-        return value.getUint8(0);
-      })
-    })
+    return this.pollutionCharacteristic.readValue()
+    .then(value => {
+      return value.getUint8(0);
+    });
+  }
+
+  sleep(time): any{
+    return new Promise((resolve) => setTimeout(resolve, time));
   }
 
 }
