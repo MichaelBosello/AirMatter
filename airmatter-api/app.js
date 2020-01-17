@@ -5,7 +5,7 @@ var bodyParser = require('body-parser');
 
 var users = require('./routes/users');
 
-const initDb = require("./pollution-db").initDb;
+const initDb = require("./airmatter-db").initDb;
 var app = express();
 
 const port = 3001;
