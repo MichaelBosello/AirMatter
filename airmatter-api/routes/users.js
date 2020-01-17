@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 
-const getDb = require("../pollution-db").getDb;
+const getDb = require("../airmatter-db").getDb;
 
 /* GET users listing. */
 router.post('/login', function(req, res, next) {
