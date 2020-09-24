@@ -10,6 +10,7 @@ If you use this repo, please cite our *GoodTechs '20* paper.
 
 Michael Bosello, Giovanni Delnevo, Silvia Mirri.
 [[DOI](https://doi.org/10.1145/3411170.3411256)]
+[[Slides](https://www.slideshare.net/MichaelBosello/on-exploiting-gamification-for-the-crowdsensing-of-air-pollution-a-case-study-on-a-bicyclebased-system)]
 
 ```
 @inproceedings{10.1145/3411170.3411256,
