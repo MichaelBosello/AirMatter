@@ -10,7 +10,7 @@ If you use this repo, please cite our *GoodTechs '20* paper.
 
 Michael Bosello, Giovanni Delnevo, Silvia Mirri.
 [[DOI](https://doi.org/10.1145/3411170.3411256)]
-[[Slides](https://michaelbosello.github.io/uploads/slides/presentations/goodtechs2020.pdf)]
+[[Slides](https://michaelbosello.github.io/uploads/slides/presentations/goodtechs2020-slide.pdf)]
 
 ```
 @inproceedings{10.1145/3411170.3411256,
